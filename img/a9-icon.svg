@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="105px" height="105px" viewBox="0 0 105 105" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 59 (86127) - https://sketch.com -->
+    <title>a9-icon</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <rect id="path-1" x="0" y="0" width="105" height="105"></rect>
+    </defs>
+    <g id="cpa---128" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="cpa-128" transform="translate(-668.000000, -8813.000000)">
+            <g id="art9" transform="translate(0.000000, 8752.000000)">
+                <g id="Group-18" transform="translate(542.000000, 61.000000)">
+                    <g id="a9-icon" transform="translate(126.000000, 0.000000)">
+                        <mask id="mask-2" fill="white">
+                            <use xlink:href="#path-1"></use>
+                        </mask>
+                        <g id="Rectangle"></g>
+                        <g id="multi-users" mask="url(#mask-2)" stroke-width="1.3">
+                            <g id="Groupe_9" transform="translate(0.118000, 0.000000)">
+                                <rect id="Rectangle_9" stroke="#ADB0B7" x="0.532" y="0.65" width="103.7" height="103.7" rx="23"></rect>
+                                <g id="Groupe_564" transform="translate(22.000000, 21.000000)" stroke="#000000" stroke-linecap="round" stroke-linejoin="round">
+                                    <g id="Groupe_512" transform="translate(23.000000, 7.000000)">
+                                        <path d="M27.694,9.107 C27.694,13.968 23.752,19.38 18.894,19.38 C14.036,19.38 10.088,13.968 10.088,9.107 C10.088,4.24385664 14.0303566,0.3015 18.8935,0.3015 C23.7566434,0.3015 27.699,4.24385664 27.699,9.107 L27.694,9.107 Z" id="Tracé_660"></path>
+                                        <path d="M0.263,56.063 L0.263,39.235 C0.263,29.486 8.337,25.243 16.409,25.243 L21.37,25.243 C29.442,25.243 37.513,29.486 37.513,39.235 L37.513,56.063" id="Tracé_661"></path>
+                                    </g>
+                                    <g id="Groupe_513">
+                                        <path d="M27.682,8.742 C27.682,13.607 23.74,19.016 18.882,19.016 C14.024,19.016 10.076,13.605 10.076,8.742 C10.1274357,3.91546133 14.0546873,0.0298389578 18.8815,0.0298389578 C23.7083127,0.0298389578 27.6355643,3.91546133 27.687,8.742 L27.682,8.742 Z" id="Tracé_662"></path>
+                                        <path d="M0.252,55.7 L0.252,38.867 C0.252,29.118 8.325,24.877 16.397,24.877 L21.358,24.877 C25.3203513,24.7785603 29.210164,25.9511111 32.458,28.223" id="Tracé_663"></path>
+                                    </g>
+                                </g>
+                            </g>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

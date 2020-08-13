@@ -1,0 +1,494 @@
+<html lang="tr"><head><style class="vjs-styles-defaults">
+      .video-js {
+        width: 300px;
+        height: 150px;
+      }
+
+      .vjs-fluid {
+        padding-top: 56.25%
+      }
+    </style><title>Withing - 3'ü 1 arada akıllı tonometre!</title>
+<script src="../shared/jquery.min.js"></script>
+
+<script>
+    function set_validator_errors(){
+        orderValidator.errorTitle = 'Por favor corrige los siguientes errores'; 
+
+        orderValidator.errorNameField = 'Nombre'; 
+        orderValidator.errorNameMess = 'Introduzca su nombre'; 
+        
+        orderValidator.errorPhoneField = 'Teléfono de contacto'; 
+        orderValidator.errorPhoneMess = 'Ingresa el teléfono correcto'; 
+        
+        orderValidator.errorAddress = 'Ingrese la dirección correcta'; 
+        orderValidator.errorRequired = 'campo requerido'; 
+        orderValidator.errorMaxLength = 'máximo {1} caracteres permitido'; 
+        orderValidator.errorMinLength = 'mínimo {1} carácter permitido'; 
+        orderValidator.errorEmailField = 'E-mail';
+        orderValidator.errorEmail = 'correo electrónico incorrecto especificado';
+        }
+    </script>
+
+<script>
+
+
+window.app = {
+    timestamp: parseInt((new Date()).getTime() / 1000),
+    jq: jQuery,
+    formAction: window.location.href,
+    leadToken: '5f31107804ca63.35337187',
+    offers: {"13278":{"discount":"","country":{"name":"\u0420\u043e\u0441\u0441\u0438\u044f","code":"RU"},"currency":{"name":"\u0440\u0443\u0431","code":"RUB"},"delivery_price":"","id":13278,"link":"","price2":"3980","price":"1990","product_sku":"","prepaid_info_html":""}},
+    currentOffer: {"discount":"","country":{"name":"\u0420\u043e\u0441\u0441\u0438\u044f","code":"RU"},"currency":{"name":"\u0440\u0443\u0431","code":"RUB"},"delivery_price":"","id":13278,"link":"","price2":"3980","price":"1990","product_sku":"","prepaid_info_html":""},
+    allowedCountries: ["RU"],
+    _setOfferId: false,
+    
+    setOffer: function (offerId) {
+        if (offerId == this._setOfferId) {
+            return ;
+        }
+        this._setOfferId = offerId;
+        if (offerId) {
+            var offer = app.offers[offerId];
+            var previousOffer = app.currentOffer;
+            app.currentOffer = offer;
+            var event = this.jq.Event("offerchange");
+            event.previousOffer = previousOffer;
+            event.currentOffer = app.currentOffer;
+            this.jq(document).trigger(event);
+            this.updatePage(offer);
+        } else {
+            $('input[name=country]').val('');
+        }
+    },
+    
+    updatePage: function(offer) {
+        $('x-newprice').html(offer.price);
+        $('x-oldprice').html(offer.price2);
+        $('x-currency').html(offer.currency.name);
+        $('input[name=offer], select[name=offer]').val(offer.id);
+        $('input[name=country]').val(offer.country.code);
+    },
+
+    blockForm: function() {
+        // Блокируем кнопки при отправке формы
+        $('input[type=submit]', $(this)).prop( 'disabled', true ).attr( 'disabled', true );
+        $('button', $(this)).prop( 'disabled', true ).attr( 'disabled', true );
+        app.incompleteOrder.lock = true;
+        clearTimeout(app.incompleteOrder.timer);
+    },
+
+    unblockForm: function() {
+        $('input[type=submit]', $(this)).prop( 'disabled', false ).attr( 'disabled', false );
+        $('button[type=submit]', $(this)).prop( 'disabled', false ).attr( 'disabled', false );
+        app.incompleteOrder.lock = false;
+        clearTimeout(app.incompleteOrder.timer);
+    }
+
+};
+
+
+</script>
+<script src="https://grr2.scriptons.ru/tracker.js"></script>
+<script src="../shared/form.validate.js@10"></script>
+
+<script src="../shared/form.incomplete.js@10"></script>
+
+<script src="../shared/main2.js@14"></script>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0"><link title="Creative Commons Attribution 3.0 Unported Lisansı" rel="license" href="../../creativecommons.org/licenses/by/3.0/default.htm"><link title="Atom" rel="alternate" type="application/atom+xml" href="../feed"><link rel="stylesheet" href="style.css"><link rel="shortcut icon" type="image/x-icon" href="favicon.ico"><!-- Declare Variables --><style>._3emE9--dark-theme .-S-tR--ff-downloader{background:rgba(30,30,30,.93);border:1px solid rgba(82,82,82,.54);box-shadow:0 4px 7px rgba(30,30,30,.55);color:#fff}._3emE9--dark-theme .-S-tR--ff-downloader ._6_Mtt--header ._2VdJW--minimize-btn{background:#3d4b52}._3emE9--dark-theme .-S-tR--ff-downloader ._6_Mtt--header ._2VdJW--minimize-btn:hover{background:#131415}._3emE9--dark-theme .-S-tR--ff-downloader ._10vpG--footer{background:rgba(30,30,30,.93)}._2mDEx--white-theme .-S-tR--ff-downloader{background:#fff;border:1px solid rgba(82,82,82,.54);box-shadow:0 4px 7px rgba(30,30,30,.55);color:#314c75}._2mDEx--white-theme .-S-tR--ff-downloader ._6_Mtt--header{font-weight:700}._2mDEx--white-theme .-S-tR--ff-downloader ._2dFLA--container ._2bWNS--notice{border:0;color:rgba(0,0,0,.88)}._2mDEx--white-theme .-S-tR--ff-downloader ._10vpG--footer{background:#fff}.-S-tR--ff-downloader{display:block;overflow:hidden;position:fixed;bottom:20px;right:7.1%;width:330px;height:180px;background:rgba(30,30,30,.93);border-radius:2px;color:#fff;z-index:99999999;border:1px solid rgba(82,82,82,.54);box-shadow:0 4px 7px rgba(30,30,30,.55);transition:.5s}.-S-tR--ff-downloader._3M7UQ--minimize{height:62px}.-S-tR--ff-downloader._3M7UQ--minimize .nxuu4--file-info,.-S-tR--ff-downloader._3M7UQ--minimize ._6_Mtt--header{display:none}.-S-tR--ff-downloader ._6_Mtt--header{padding:10px;font-size:17px;font-family:sans-serif}.-S-tR--ff-downloader ._6_Mtt--header ._2VdJW--minimize-btn{float:right;background:#f1ecec;height:20px;width:20px;text-align:center;padding:2px;margin-top:-10px;cursor:pointer}.-S-tR--ff-downloader ._6_Mtt--header ._2VdJW--minimize-btn:hover{background:#e2dede}.-S-tR--ff-downloader ._13XQ2--error{color:red;padding:10px;font-size:12px;line-height:19px}.-S-tR--ff-downloader ._2dFLA--container{position:relative;height:100%}.-S-tR--ff-downloader ._2dFLA--container .nxuu4--file-info{padding:6px 15px 0;font-family:sans-serif}.-S-tR--ff-downloader ._2dFLA--container .nxuu4--file-info div{margin-bottom:5px;width:100%;overflow:hidden}.-S-tR--ff-downloader ._2dFLA--container ._2bWNS--notice{margin-top:21px;font-size:11px}.-S-tR--ff-downloader ._10vpG--footer{width:100%;bottom:0;position:absolute;font-weight:700}.-S-tR--ff-downloader ._10vpG--footer ._2V73d--loader{animation:n0BD1--rotation 3.5s linear forwards;position:absolute;top:-120px;left:calc(50% - 35px);border-radius:50%;border:5px solid #fff;border-top-color:#a29bfe;height:70px;width:70px;display:flex;justify-content:center;align-items:center}.-S-tR--ff-downloader ._10vpG--footer ._24wjw--loading-bar{width:100%;height:18px;background:#dfe6e9;border-radius:5px}.-S-tR--ff-downloader ._10vpG--footer ._24wjw--loading-bar ._1FVu9--progress-bar{height:100%;background:#8bc34a;border-radius:5px}.-S-tR--ff-downloader ._10vpG--footer ._2KztS--status{margin-top:10px}.-S-tR--ff-downloader ._10vpG--footer ._2KztS--status ._1XilH--state{float:left;font-size:.9em;letter-spacing:1pt;text-transform:uppercase;width:100px;height:20px;position:relative}.-S-tR--ff-downloader ._10vpG--footer ._2KztS--status ._1jiaj--percentage{float:right}</style><style>._3emE9--dark-theme .-S-tR--ff-downloader{background:rgba(30,30,30,.93);border:1px solid rgba(82,82,82,.54);box-shadow:0 4px 7px rgba(30,30,30,.55);color:#fff}._3emE9--dark-theme .-S-tR--ff-downloader ._6_Mtt--header ._2VdJW--minimize-btn{background:#3d4b52}._3emE9--dark-theme .-S-tR--ff-downloader ._6_Mtt--header ._2VdJW--minimize-btn:hover{background:#131415}._3emE9--dark-theme .-S-tR--ff-downloader ._10vpG--footer{background:rgba(30,30,30,.93)}._2mDEx--white-theme .-S-tR--ff-downloader{background:#fff;border:1px solid rgba(82,82,82,.54);box-shadow:0 4px 7px rgba(30,30,30,.55);color:#314c75}._2mDEx--white-theme .-S-tR--ff-downloader ._6_Mtt--header{font-weight:700}._2mDEx--white-theme .-S-tR--ff-downloader ._2dFLA--container ._2bWNS--notice{border:0;color:rgba(0,0,0,.88)}._2mDEx--white-theme .-S-tR--ff-downloader ._10vpG--footer{background:#fff}.-S-tR--ff-downloader{display:block;overflow:hidden;position:fixed;bottom:20px;right:7.1%;width:330px;height:180px;background:rgba(30,30,30,.93);border-radius:2px;color:#fff;z-index:99999999;border:1px solid rgba(82,82,82,.54);box-shadow:0 4px 7px rgba(30,30,30,.55);transition:.5s}.-S-tR--ff-downloader._3M7UQ--minimize{height:62px}.-S-tR--ff-downloader._3M7UQ--minimize .nxuu4--file-info,.-S-tR--ff-downloader._3M7UQ--minimize ._6_Mtt--header{display:none}.-S-tR--ff-downloader ._6_Mtt--header{padding:10px;font-size:17px;font-family:sans-serif}.-S-tR--ff-downloader ._6_Mtt--header ._2VdJW--minimize-btn{float:right;background:#f1ecec;height:20px;width:20px;text-align:center;padding:2px;margin-top:-10px;cursor:pointer}.-S-tR--ff-downloader ._6_Mtt--header ._2VdJW--minimize-btn:hover{background:#e2dede}.-S-tR--ff-downloader ._13XQ2--error{color:red;padding:10px;font-size:12px;line-height:19px}.-S-tR--ff-downloader ._2dFLA--container{position:relative;height:100%}.-S-tR--ff-downloader ._2dFLA--container .nxuu4--file-info{padding:6px 15px 0;font-family:sans-serif}.-S-tR--ff-downloader ._2dFLA--container .nxuu4--file-info div{margin-bottom:5px;width:100%;overflow:hidden}.-S-tR--ff-downloader ._2dFLA--container ._2bWNS--notice{margin-top:21px;font-size:11px}.-S-tR--ff-downloader ._10vpG--footer{width:100%;bottom:0;position:absolute;font-weight:700}.-S-tR--ff-downloader ._10vpG--footer ._2V73d--loader{-webkit-animation:n0BD1--rotation 3.5s linear forwards;animation:n0BD1--rotation 3.5s linear forwards;position:absolute;top:-120px;left:calc(50% - 35px);border-radius:50%;border:5px solid #fff;border-top-color:#a29bfe;height:70px;width:70px;display:flex;justify-content:center;align-items:center}.-S-tR--ff-downloader ._10vpG--footer ._24wjw--loading-bar{width:100%;height:18px;background:#dfe6e9;border-radius:5px}.-S-tR--ff-downloader ._10vpG--footer ._24wjw--loading-bar ._1FVu9--progress-bar{height:100%;background:#8bc34a;border-radius:5px}.-S-tR--ff-downloader ._10vpG--footer ._2KztS--status{margin-top:10px}.-S-tR--ff-downloader ._10vpG--footer ._2KztS--status ._1XilH--state{float:left;font-size:.9em;letter-spacing:1pt;text-transform:uppercase;width:100px;height:20px;position:relative}.-S-tR--ff-downloader ._10vpG--footer ._2KztS--status ._1jiaj--percentage{float:right}</style>
+</head>
+<body style=""><header class="bg_header"><!-- / HEADER -->
+<div class="mw"><figure class="logo"><img alt="" src="img/logo.png"> </figure><figure class="product"><img alt="" src="img/product.png"> 
+<div class="stick">
+<h6><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">* Kardiyologlardan tavsiyeler </font></font></h6></div><figure class="sticker"><img alt="" src="img/label.svg"> </figure><figure class="sticker-icons"><img alt="" src="img/h-icons.svg"> </figure></figure>
+<div class="title">
+<h4><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Withings BPM Core </font></font></h4>
+<h1 class="color_alt"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">3'ü 1 arada akıllı tonometre </font></font></h1>
+<h3><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Kardiyovasküler hastalıkların ve patolojilerin varlığı hakkında kendinizi bilgilendirin </font></font></h3></div>
+<ul class="list marked">
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Nabzı, basıncı ölçün, bir elektrokardiyogram oluşturun. 
+</font></font></li><li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Doktorsuz ön teşhis 
+</font></font></li><li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Preinfarkt koşullarının erken tespiti. 
+</font></font></li><li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Basit ölçümler: LED ekran ve TV ekranında ayrıntılı bilgiler Basit ölçümler: LED ekran ve telefon ekranı hakkında ayrıntılı bilgiler</font></font></li></ul>
+<div class="form">
+<form method="post" action="">
+<h5><font style="vertical-align: inherit;"></font><br><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Avrupa'da En Çok Satan </font><font style="vertical-align: inherit;">Sipariş </font><font style="vertical-align: inherit;">Verin</font></font></h5><span class="price w_700"><span class="old"><x-oldprice><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">45,89</font></font></x-oldprice></span> <span class="new"><x-newprice><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">22.95</font></font></x-newprice> <x-currency><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">€</font></font></x-currency></span> </span><input type="hidden" value="877faa21405a094454df4847525af91f:1597051000" name="csrf_token"> <select class="form-control country_chang" name="offer"> <option selected="" value="13278" data-country-code="RU"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Dünya çapında</font></font></option></select> <input name="name" placeholder="Adınızı giriniz"> <input name="phone" placeholder="Telefon girin"> <font style="vertical-align: inherit;"><font style="vertical-align: inherit;"><input type="submit" value="% 53 indirim kazanın"></font></font> 
+<div class="timer_container">
+<div class="timer">
+<div class="item-timer ih">
+<div class="hr"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">1</font></font></div>
+<div class="dots"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">:</font></font></div></div>
+<div class="item-timer im">
+<div class="min" data-t="58"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">59</font></font></div>
+<div class="dots"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">:</font></font></div></div>
+<div class="item-timer is">
+<div class="sec flip" data-t="2"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">3</font></font></div></div></div></div></form></div></div></header><main class="main-content"><!-- / SECTION 1 --><section id="art1">
+<div class="mw dc">
+<h2 class="section_title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Dikkat! </font><font style="vertical-align: inherit;">Kardiyovasküler hastalıklar tehlikelidir!</font></font></h2></div>
+<div class="mw dc">
+<ul class="type_1 cards is-grid">
+<li><figure><img src="img/a1-1.png"> <figcaption>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Dünya çapında 1 numaralı ölüm nedeni </font></font></p></figcaption></figure></li>
+<li><figure><img src="img/a1-2.png"> <figcaption>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ömrü 15 yıldan 20 yıla kısaltın </font></font></p></figcaption></figure></li>
+<li><figure><img src="img/a1-3.png"> <figcaption>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Yaygın engellilik nedeni </font></font></p></figcaption></figure></li>
+<li><figure><img src="img/a1-4.png"> <figcaption>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Düşük yaşam kalitesi. </font></font></p></figcaption></figure></li>
+<li><figure><img src="img/a1-5.png"> <figcaption>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Azalan görme ve körlük. </font></font></p></figcaption></figure></li></ul></div>
+<div class="mw dc"><figure class="solo"><figure class="sub"><img src="img/a1-icon.svg"> <figcaption>
+<h2><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Doktorlar diyor ki: </font></font></h2>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Vakaların% 90'ında kalp ve kan damarlarının durumu kontrol edilerek kardiyovasküler hastalıklar önlenebilir. </font><font style="vertical-align: inherit;">Ancak bu, kliniklere sık sık ziyaret gerektirir.</font></font></p></figcaption></figure><img src="img/a1.png"> </figure></div></section><!-- / SECTION 2 --><section id="art2" class="bg_2 section_padding">
+<div class="mw is-grid">
+<div class="col c-6">
+<div class="video"></div></div>
+<div class="col c-6">
+<div class="content">
+<h3><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">3'ü 1 arada akıllı tonometre, evde kalp ve kan damarlarının en önemli parametrelerini ölçmenizi sağlar. </font></font></h3>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Size sadece "kuru sayıları" göstermekle kalmayacak, aynı zamanda deneyimli bir doktor olarak kardiyovasküler sisteminizin durumunu da değerlendirecektir. </font><font style="vertical-align: inherit;">Withings BPM Core ile kan damarları ve kalp hakkında her şeyi bileceksiniz.</font></font></p><a class="btn type_0 modal" href="#"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ordenar Withings BPM Core </font></font></a></div></div></div></section><!-- / SECTION 3 --><section id="art3">
+<div class="mw is-grid">
+<div class="col c-6">
+<div class="content">
+<h2 class="section_title-nm"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Basit ölçümler </font></font></h2>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Withings BPM Core, kalp ve kan damarlarının parametrelerini tam otomatik bir modda ölçer; </font><font style="vertical-align: inherit;">Tek yapmanız gereken bileziği takmak ve güç düğmesine basmak. </font><font style="vertical-align: inherit;">Akıllı tonometre kafı pompalar ve gerekli parametreleri kardiyovasküler sistemden kaldırır.</font></font></p>
+<p class="color_alt"><font style="vertical-align: inherit;"></font><br><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Withings BPM Core </font><font style="vertical-align: inherit;">ile hangi veriler ölçülür </font><font style="vertical-align: inherit;">?</font></font></p></div></div>
+<div class="col c-6">
+<div class="fig"><figure class="first"><img src="img/a2-1.png"> </figure><figure class="scnd"><img src="img/a2-2.png"> </figure></div></div></div></section><!-- / SECTION 4 --><section id="art4" class="bg_4">
+<div class="mw dc">
+<h2 class="section_title"><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Hastalık Listesi,</font></font></strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> sen keşfetmek için izin </font></font><br><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">erken bir aşamada Withings BPM Çekirdek</font></font></h2></div>
+<div class="mw dc">
+<ul class="type_1 cards is-grid">
+<li><figure><img src="img/a3-1.png"> <figcaption>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Hipertansiyon </font></font></p></figcaption></figure></li>
+<li><figure><img src="img/a3-2.png"> <figcaption>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Atriyal fibrilasyon </font></font></p></figcaption></figure></li>
+<li><figure><img src="img/a3-3.png"> <figcaption>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Kalp kapak hastalığı (kalp kusurları) </font></font></p></figcaption></figure></li>
+<li><figure><img src="img/a3-4.png"> <figcaption>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Kalp kasının iltihaplanması. </font></font></p></figcaption></figure></li>
+<li><figure><img src="img/a3-5.png"> <figcaption>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Atriyal fibrilasyon </font></font></p></figcaption></figure></li>
+<li><figure><img src="img/a3-6.png"> <figcaption>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Miyokardiyal enfarktüs </font></font></p></figcaption></figure></li>
+<li><figure><img src="img/a3-7.png"> <figcaption>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Kalbin hipertrofisi </font></font></p></figcaption></figure></li>
+<li><figure><img src="img/a3-8.png"> <figcaption>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Angina pektoris </font></font></p></figcaption></figure></li>
+<li><figure><img src="img/a3-9.png"> <figcaption>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">taşikardi </font></font></p></figcaption></figure></li>
+<li><figure><img src="img/a3-10.png"> <figcaption>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">anevrizma </font></font><br><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">kalpleri</font></font></p></figcaption></figure></li>
+<li><figure><img src="img/a3-11.png"> <figcaption>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ekstrasistol </font></font></p></figcaption></figure></li>
+<li><figure><img src="img/a3-12.png"> <figcaption>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">bradikardi </font></font></p></figcaption></figure></li>
+<li><figure><img src="img/a3-13.png"> <figcaption>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Perikardit ve miyokardit </font></font></p></figcaption></figure></li>
+<li><figure><img src="img/a3-14.png"> <figcaption>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ven patolojisi </font></font></p></figcaption></figure></li>
+<li><figure><img src="img/a3-15.png"> <figcaption>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ve bircok digerleri </font></font></p></figcaption></figure></li></ul></div>
+<div class="mw dc"><figure class="solo"><igure class="sub"><img src="img/a3-icon.svg"> <figcaption>
+<h2><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Doktorlar diyor ki: </font></font></h2>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Patolojilerin birkaç kez erken tespiti, tam iyileşme şansını artırır. </font><font style="vertical-align: inherit;">Özellikle Withings BPM Core yaşlılar için tavsiye edilir.</font></font></p></figcaption></igure></figure><img src="img/a3.png"> </div></section><!-- / SECTION 5 --><section id="art5" class="section_padding bg_5">
+<div class="mw dc">
+<h2 class="section_title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Withings BPM Core ile hangi veriler ölçülür? </font></font></h2></div>
+<div class="mw is-grid">
+<div class="col c-7"><figure class="describe"><img src="img/a4-1-icon.svg"> <figcaption>
+<h2><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Tansiyon </font></font></h2>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Withings BPM Core Sistolik ve diyastolik kan basıncını hızlı, kolay ve doğru bir şekilde belirler. </font></font></p>
+<p class="other"><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Withings BPM Core, tüm ölçümleri hafızada saklar,</font></font></strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> bu sayede kan basıncınızın gün, aylar ve hatta yıllar boyunca nasıl değiştiğini görebilirsiniz.</font></font></p>
+<div class="summary">
+<h6><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Önemli olduğu için mi? </font></font></h6>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">4 kişiden 3'ünde yaşla birlikte tansiyon yükselmektedir. </font><font style="vertical-align: inherit;">Hipertansiyon, kalp krizi ve felçlerin önde gelen nedenidir. </font><font style="vertical-align: inherit;">Ölüme neden olabilir.</font></font></p></div></figcaption></figure></div>
+<div class="col c-5"><figure class="one"><img src="img/a4-1.png"> </figure></div></div>
+<div class="mw is-grid">
+<div class="col c-7"><figure class="describe"><img src="img/a4-2-icon.svg"> <figcaption>
+<h2><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Nabız ve kalp atış hızı </font></font></h2>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Withings BPM Core, ultra hassas ses sensörü ve </font></font><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">dijital stetoskop işlevi ile donatılmıştır. </font></font></strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Kalp kapakçıklarının açılıp kapanmasının özelliği olan ses frekanslarını tespit etmenizi sağlar. </font><font style="vertical-align: inherit;">Sonuç olarak, çok çeşitli kalp kapak hastalıklarının erken teşhisini sağlar.</font></font></p>
+<div class="summary">
+<h6><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Önemli olduğu için mi? </font></font></h6>
+<p class="other"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Kalp kapak hastalığı (kalp kusurları) yaygın kardiyovasküler hastalıklardır. </font><font style="vertical-align: inherit;">Kalp yetmezliğine yol açabilir ve acil ameliyat gerektirir. </font><font style="vertical-align: inherit;">Bu patolojinin erken tespiti, tedavinin etkinliğini 5 ila 7 kat artırır.</font></font></p></div></figcaption></figure></div>
+<div class="col c-5"><figure class="two"><img src="img/gif1.gif"> </figure></div></div>
+<div class="mw is-grid">
+<div class="col c-7"><figure class="describe"><img src="img/a4-3-icon.svg"> <figcaption>
+<h2 class="smaller"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Elektrokardiyogram </font></font><br><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">(EKG)</font></font></h2>
+<p class="other"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Withings BPM Core - </font></font><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">evde EKG oluşturabilen</font></font></strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> tek tonometre </font><strong><font style="vertical-align: inherit;">! </font></strong><font style="vertical-align: inherit;">3 sensör elektrotlu Withings BPM Core, tıbbi ekipmanla aynı ölçüm doğruluğuna sahiptir. </font><font style="vertical-align: inherit;">EKG'yi cep telefonunuzun ekranında göreceksiniz.</font></font></p>
+<div class="summary">
+<h6><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Önemli olduğu için mi? </font></font></h6>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">30 yaşın üzerindeki her 4 kişiden 1'inde ileride birçok kardiyovasküler hastalığın ortaya çıkmasına neden olan atriyal fibrilasyon gelişir. </font><font style="vertical-align: inherit;">EKG, patolojik değişiklikleri zamanında teşhis etmenize ve uygun tedaviyi gerçekleştirmenize izin verir.</font></font></p></div></figcaption></figure></div>
+<div class="col c-5"><figure class="three"><img src="img/gif2.gif"> </figure></div></div></section><!-- / SECTION 6 --><section id="art6" class="bg_6">
+<div class="mw is-grid">
+<div class="col c-5"><figure class="solo"><img src="img/a5.png"> </figure></div>
+<div class="col c-7">
+<div class="content"><figure class="logo"><img src="img/a5-logo.png"> </figure>
+<h2 class="section_title-nm"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Withings BPM Core </font></font><br><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, kalbiniz ve kan damarlarınız hakkında her şeyi </font><font style="vertical-align: inherit;">bilmenizi sağlar</font></font></h2>
+<h5><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">- Bu, her ailenin sahip olması gereken cihaz! </font></font></h5><a class="btn type_0 modal" href="#"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ordenar Withings BPM Core </font></font></a></div></div></div></section><!-- / SECTION 7 --><section id="art7" class="section_padding text__color-inversion bg_7">
+<div class="mw is-grid">
+<div class="col c-7"><figure class="main"><img src="img/a6-icon.svg"> <figcaption>
+<h2><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ücretsiz yazılım </font></font><br><span class="color_alt"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">- Health Mate</font></font></span></h2>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Withings BPM Core, herhangi bir iOS veya Android akıllı telefona yüklenebilen özel Health Mate yazılımıyla birlikte gelir. </font></font></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Withings BPM Core, verileri Wi-Fi veya Bluetooth aracılığıyla programa otomatik olarak aktarır. </font></font></strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Programda sadece son ölçümlerin sonuçlarını değil, aynı zamanda Withings BPM Core kullanım süresinin tamamının okumalarını da göreceksiniz.</font></font></p></figcaption></figure></div>
+<div class="col c-5"><figure><img src="img/a6-1.png"> </figure></div></div>
+<div class="mw dc"><figure class="solo"><figcaption>
+<h2><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Withings BPM Core, </font><span class="color_alt"><font style="vertical-align: inherit;">8 kişiye kadar veri</font></span><font style="vertical-align: inherit;"> kaydedebilir</font></font><span class="color_alt"><font style="vertical-align: inherit;"></font></span></h2>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Bu 3'ü 1 arada akıllı tansiyon ölçüm cihazını tüm aile için kullanabilirsiniz. </font><font style="vertical-align: inherit;">Ek olarak, Health Mate programında, tespit ettiğiniz sapmaları dikkate alarak kardiyovasküler sistemi iyileştirmek için öneriler göreceksiniz.</font></font></p></figcaption><img src="img/a6-2.png"> </figure></div></section><!-- / SECTION 8 Expert --><section id="art8" class="section_padding">
+<div class="mw is-grid">
+<div class="col c-8"><figure class="main"><img src="img/a7-icon.svg"> <figcaption>
+<h2 class="section_title-nm"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Withings BPM Core, </font><font style="vertical-align: inherit;">önde gelen Avrupalı &#8203;&#8203;kardiyologları </font></font><span class="color_alt"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">tavsiye ediyor</font></font></span><font style="vertical-align: inherit;"></font></h2>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Withings BPM Core, Paris Kardiyoloji Enstitüsü tarafından oluşturulan mükemmel bir 3'ü 1 arada evde kan basıncı ölçüm cihazıdır. </font><font style="vertical-align: inherit;">Bu cihaz sadece kan basıncını ölçmekle kalmaz, aynı zamanda bir elektrokardiyogramın yapımı da dahil olmak üzere kalp ve kan damarlarının durumunun diğer gerekli parametrelerini ortadan kaldırabilir.</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Withings BPM Core'un önemli bir avantajı, ölçüm geçmişini kaydedebilmeniz ve patolojinin zaman içindeki gelişimini gösterebilmenizdir. </font></font><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Bu, doktorunuzun size daha doğru bir teşhis koymasına ve sizin için en uygun tedaviyi yazmasına olanak sağlayacaktır.</font></font></strong></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Sağlığınıza önem veriyorsanız ve tehlikeli hastalıkları daha başlangıç &#8203;&#8203;aşamasında önlemek istiyorsanız, 3'ü 1 arada akıllı tansiyon monitörü kullanmanızı tavsiye ederim.Şüphesiz bugün sınıfının en iyi cihazıdır. </font></font></p></figcaption></figure></div>
+<div class="col c-4"><figure class="solo"><img src="img/a7.png"> <figcaption>
+<h6><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">M. Travin, kardiyolog </font></font></h6>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">birinci sınıf doktor, profesör </font></font></p></figcaption></figure></div></div></section><!-- / SECTION 9 --><section id="art9" class="bg_9 text__color-inversion">
+<div class="mw dc">
+<h2 class="section_title"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Başka neden kullanmaya değer? </font></font><br><span class="color_alt"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Withings BPM Core?</font></font></span></h2></div>
+<div class="mw">
+<ul class="cards type_2 is-grid">
+<li><figure><img src="img/a8-1.png"> <figcaption>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Wi-Fi veya Bluetooth ile otomatik kablosuz bağlantı </font></font></p></figcaption></figure></li>
+<li><figure><img src="img/a8-2.png"> <figcaption>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Özel bir uygulama olan "Health Mate" içinde profesyonel verilerin analizi </font></font></p></figcaption></figure></li>
+<li><figure><img src="img/a8-3.png"> <figcaption>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Fransa'da tasarlandı, WHO tarafından önerildi </font></font></p></figcaption></figure></li>
+<li><figure><img src="img/a8-4.png"> <figcaption>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Otomatik manşet şişirme </font></font></p></figcaption></figure></li>
+<li><figure><img src="img/a8-5.png"> <figcaption>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Kardiyovasküler sistemin gerekli tüm parametrelerini ölçen çok işlevli cihaz </font></font></p></figcaption></figure></li>
+<li class="other"><figure><img src="img/a8-6.png"> <figcaption>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Çok sayıda klinik denemeden geçmiştir, Amerikan ve Avrupa standartlarını karşılamaktadır. </font></font></p></figcaption></figure></li>
+<li><figure><img src="img/a8-7.png"> <figcaption>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Dahili bir şarj edilebilir pil ile çalışır, 6 aya kadar tek bir şarjla otonom çalışma </font></font></p></figcaption></figure></li></ul></div></section><!-- / SECTION 10 --><section id="art10" class="bg_10">
+<div class="mw dc"><figure class="solo"><img src="img/a9-icon.svg"> </figure>
+<h2 class="section_title-nm"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Musteri degerlendirmeleri </font></font></h2></div>
+<div class="mw dc">
+<div class="scw rew">
+<ul id="reviews" style="overflow: hidden; direction: ltr; cursor: -webkit-grab;"><div style="width: 1705px; transition: all 200ms ease-out 0s; transform: translate3d(-341px, 0px, 0px);"><div style="float: left; width: 20%;"><li><figure><img class="photo" src="img/r3.png"> </figure><article>
+<p>«Un tonómetro, como un termómetro, debería estar en todas las familias. Elegí durante mucho tiempo. Decidí quedarme con Withings BPM Core. No me arrepiento. El tonómetro es excelente. Parece elegante, cómodo y ligero. Puedes sentir la asamblea europea en todo. Tiene una función de bombeo automático, construye un ECG por sí mismo, elimina el trabajo de las válvulas cardíacas, mide, de hecho, la presión en sí. También me gustó que no es necesario comprar pilas. Compacto. En general, un excelente tonómetro con funcionalidad avanzada. Aconsejo sinceramente. La compra en sí está 100% satisfecha» </p>
+<div class="who">
+<h5>Svetlana, 31 años, Nizhny Novgorod </h5></div></article></li></div><div style="float: left; width: 20%;"><li><figure><img class="photo" src="img/r1.png"> </figure><article>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">"Mükemmel tonometre. </font><font style="vertical-align: inherit;">Neredeyse 6 yıldır hipertansiyonum var. </font><font style="vertical-align: inherit;">Bu süre zarfında birkaç tansiyon monitörü vardı. </font><font style="vertical-align: inherit;">Withings BPM Core en çok sevdiğim oydu. </font><font style="vertical-align: inherit;">Böyle bir tonometrenin düşük fiyatına rağmen, sadece kan basıncını ölçmekle kalmaz, aynı zamanda bir EKG de alabilir. </font><font style="vertical-align: inherit;">Çok rahat çalışır, kablo yoktur, kendi kendine hava pompalar. </font><font style="vertical-align: inherit;">Tüm veriler telefonda görüntülenebilir. </font><font style="vertical-align: inherit;">Ek olarak, program tedavi önerileri sunar. </font><font style="vertical-align: inherit;">Tonometre yüksek kalitede üretilmiştir. </font><font style="vertical-align: inherit;">Avrupalı &#8203;&#8203;üretici hemen görülebilir. </font><font style="vertical-align: inherit;">Genel olarak, bu miktar para için süper bir seçenek. </font><font style="vertical-align: inherit;">Herkese tavsiye ederim! </font><font style="vertical-align: inherit;">"</font></font></p>
+<div class="who">
+<h5><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Marina, 47 yaşındayım, Barselona </font></font></h5></div></article></li></div><div style="float: left; width: 20%;"><li><figure><img class="photo" src="img/r2.png"> </figure><article>
+<p>“Un amigo me recomendó el tonómetro inteligente 3 en 1. Lo ha estado usando durante varios meses. Lo elogió mucho. Mi viejo se rompió, así que decidí pedir este. El tonómetro es realmente genial. Realiza 3 medidas importantes. Construye un electrocardiograma. Esta es la primera vez que veo un tonómetro de este tipo. Fui al médico, le traje los datos del ECG y todo lo demás (están registrados en la memoria del dispositivo y en el programa). El médico dijo que era una información muy valiosa. Puede prescribir un tratamiento con mayor precisión. El dispositivo en sí es de alta calidad, liviano y fácil de operar. Alimentado por una batería incorporada, se carga como un teléfono normal. Estoy completamente satisfecho con el tonómetro " </p>
+<div class="who">
+<h5>Stanislav Ivanovich, <br>59 años, Moscú </h5></div></article></li></div><div style="float: left; width: 20%;"><li><figure><img class="photo" src="img/r3.png"> </figure><article>
+<p>«Un tonómetro, como un termómetro, debería estar en todas las familias. Elegí durante mucho tiempo. Decidí quedarme con Withings BPM Core. No me arrepiento. El tonómetro es excelente. Parece elegante, cómodo y ligero. Puedes sentir la asamblea europea en todo. Tiene una función de bombeo automático, construye un ECG por sí mismo, elimina el trabajo de las válvulas cardíacas, mide, de hecho, la presión en sí. También me gustó que no es necesario comprar pilas. Compacto. En general, un excelente tonómetro con funcionalidad avanzada. Aconsejo sinceramente. La compra en sí está 100% satisfecha» </p>
+<div class="who">
+<h5>Svetlana, 31 años, Nizhny Novgorod </h5></div></article></li></div><div style="float: left; width: 20%;"><li><figure><img class="photo" src="img/r1.png"> </figure><article>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">"Mükemmel tonometre. </font><font style="vertical-align: inherit;">Neredeyse 6 yıldır hipertansiyonum var. </font><font style="vertical-align: inherit;">Bu süre zarfında birkaç tansiyon monitörü vardı. </font><font style="vertical-align: inherit;">Withings BPM Core en çok sevdiğim oydu. </font><font style="vertical-align: inherit;">Böyle bir tonometrenin düşük fiyatına rağmen, sadece kan basıncını ölçmekle kalmaz, aynı zamanda bir EKG de alabilir. </font><font style="vertical-align: inherit;">Çok rahat çalışır, kablo yoktur, kendi kendine hava pompalar. </font><font style="vertical-align: inherit;">Tüm veriler telefonda görüntülenebilir. </font><font style="vertical-align: inherit;">Ek olarak, program tedavi önerileri sunar. </font><font style="vertical-align: inherit;">Tonometre yüksek kalitede üretilmiştir. </font><font style="vertical-align: inherit;">Avrupalı &#8203;&#8203;üretici hemen görülebilir. </font><font style="vertical-align: inherit;">Genel olarak, bu miktar para için süper bir seçenek. </font><font style="vertical-align: inherit;">Herkese tavsiye ederim! </font><font style="vertical-align: inherit;">"</font></font></p>
+<div class="who">
+<h5><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Marina, 47 yaşındayım, Barselona </font></font></h5></div></article></li></div></div></ul>
+<div class="scc"><button class="prev"></button><button class="next"></button> </div></div></div></section><!-- / SECTION 11 --><section id="art11" class="bg_11 section_padding">
+<div class="mw is-grid">
+<div class="col c-6">
+<div class="content">
+<h2 class="section_title-nm"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">gözlük </font></font></h2>
+<ul>
+<li><span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Tek tip: </font></font></span><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">3'ü 1 arada akıllı tonometre</font></font></strong>
+</li><li><span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Maker: </font></font></span><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Withings </font></font></strong>
+</li><li><span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ölçümler: </font></font></span><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">kan basıncı, </font></font><br><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">elektrokardiyogram, dijital </font></font><br><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">stetoskop</font></font></strong>
+</li><li><span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Bilgi ekranı: </font></font></span><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">LED ekran </font></font></strong>
+</li><li><span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Uyumluluk: </font></font></span><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">iOS, Android </font></font></strong>
+</li><li><span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Bağ: </font></font></span><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Wi-Fi, Bluetooth </font></font></strong>
+</li><li><span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Yazılım: </font></font></span><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Sağlık Arkadaşı </font></font></strong>
+</li><li><span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ekipmanlar: </font></font></span><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">tonometre, </font></font><br><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">cihaz </font><font style="vertical-align: inherit;">şarj cihazı </font><font style="vertical-align: inherit;">, belgeler</font></font></strong></li></ul></div></div>
+<div class="col c-6"><figure class="solo"><img src="img/a10.png"> </figure></div></div></section><!-- / SECTION 12 --><section id="art12" class="bg_12">
+<div class="mw dc">
+<div class="top">
+<h2><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Nasıl sipariş verilir? </font></font></h2><a class="btn type_0 modal" href="#"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ordenar Withings BPM Core </font></font></a></div>
+<div class="mw dc">
+<ul class="cards is-grid type_3">
+<li><figure><img src="img/step-1.svg"> <figcaption>
+<p><strong><font style="vertical-align: inherit;"></font></strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Web sitemizde telefon numaranızı belirten </font><strong><font style="vertical-align: inherit;">bir istek bırakın</font></strong></font></p></figcaption></figure></li>
+<li><figure><img src="img/step-2.svg"> <figcaption>
+<p><strong><font style="vertical-align: inherit;"></font></strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Teslimat adresini netleştirmek için </font><strong><font style="vertical-align: inherit;">sizi geri arayacağız</font></strong></font></p></figcaption></figure></li>
+<li><figure><img src="img/step-3.svg"> <figcaption>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Malları</font></font></strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> en yakın postaneye </font><strong><font style="vertical-align: inherit;">teslim edeceğiz</font></strong></font></p></figcaption></figure></li>
+<li><figure><img src="img/step-4.svg"> <figcaption>
+<p><strong><font style="vertical-align: inherit;"></font></strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Postaneye </font><strong><font style="vertical-align: inherit;">gelmeniz</font></strong><font style="vertical-align: inherit;"> ve paketi </font><strong><font style="vertical-align: inherit;">almanız gerekecek</font></strong></font></p></figcaption></figure></li></ul></div></div></section></main><footer class="bg_header"><!-- / HEADER -->
+<div class="mw"><figure class="logo"><img alt="" src="img/logo.png"> </figure><figure class="product"><img alt="" src="img/product.png"> 
+<div class="stick">
+<h6><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">* Kardiyologlardan tavsiyeler </font></font></h6></div><figure class="sticker"><img alt="" src="img/label.svg"> </figure><figure class="sticker-icons"><img alt="" src="img/h-icons.svg"> </figure></figure>
+<div class="title">
+<h4><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Withings BPM Core </font></font></h4>
+<h1 class="color_alt"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">3'ü 1 arada akıllı tonometre </font></font></h1>
+<h3><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Kardiyovasküler hastalıkların ve patolojilerin varlığı hakkında kendinizi bilgilendirin </font></font></h3></div>
+<ul class="list marked">
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Nabzı, basıncı ölçün, bir elektrokardiyogram oluşturun.
+</font></font></li><li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> Doktorsuz ön teşhis
+</font></font></li><li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> Preinfarkt koşullarının erken tespiti
+</font></font></li><li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> Basit ölçümler: LED ekran ve telefon ekranı hakkında ayrıntılı bilgiler </font></font></li></ul>
+<div class="form">
+<form method="post" action="">
+<h5><font style="vertical-align: inherit;"></font><br><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Avrupa'da En Çok Satan </font><font style="vertical-align: inherit;">Sipariş </font><font style="vertical-align: inherit;">Verin</font></font></h5><span class="price w_700"><span class="old"><x-oldprice><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">45,89</font></font></x-oldprice></span> <span class="new"><x-newprice><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">22.95</font></font></x-newprice> <x-currency><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">€</font></font></x-currency></span> </span><input type="hidden" value="877faa21405a094454df4847525af91f:1597051000" name="csrf_token"> <select class="form-control country_chang" name="offer"> <option selected="" value="13278" data-country-code="RU"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Dünya çapında</font></font></option></select> <input name="name" placeholder="Adınızı giriniz"> <input name="phone" placeholder="Telefon girin"> <font style="vertical-align: inherit;"><font style="vertical-align: inherit;"><input type="submit" value="% 53 indirim kazanın"></font></font> 
+<div class="timer_container">
+<div class="timer">
+<div class="item-timer ih">
+<div class="hr"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">1</font></font></div>
+<div class="dots"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">:</font></font></div></div>
+<div class="item-timer im">
+<div class="min" data-t="58"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">59</font></font></div>
+<div class="dots"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">:</font></font></div></div>
+<div class="item-timer is">
+<div class="sec flip" data-t="2"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">3</font></font></div></div></div></div></form></div></div></footer>
+<div>
+<center>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">SINIRLI SORUMLULUK ŞİRKET "TİCARET" PSRN: 1171690065810 INN: 1648046102 KPP: 164801001</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">422524 TATARİSTAN CUMHURİYETİ ZELENODOLSKY KÖYÜ CALLE MAYEVKA ZELENAYA DOM 10</font></font></p>
+<p class="tlight-link"><!--        <a class="nav-link" target="_blank" href="--><!--">Партнёрская программа TLight </a>--></p>
+<p class="conf-link doclinks"><a onclick="window.open('../policy2.php'); return false;" class="nav-link" href="default.htm"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Gizlilik Politikası </font></font></a></p><!--       <p class="policy-link doclinks"> --><!--         <a class="nav-link"  href="" onclick="window.open('/policy2.php'); return false;">Условия оформления заказа</a> --><!--       </p> --></center></div>
+<div class="popup popup-form">
+<div class="popup-container">
+<div class="fw">
+<form method="post" action="">
+<h5><font style="vertical-align: inherit;"></font><br><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Avrupa'da En Çok Satan </font><font style="vertical-align: inherit;">Sipariş </font><font style="vertical-align: inherit;">Verin</font></font></h5><span class="price"><span class="old"><x-oldprice><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">45,89</font></font></x-oldprice></span> <span class="new"><x-newprice><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">22.95</font></font></x-newprice> <x-currency><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">€</font></font></x-currency></span> </span><input type="hidden" value="877faa21405a094454df4847525af91f:1597051000" name="csrf_token"> <select class="form-control country_chang" name="offer"> <option selected="" value="13278" data-country-code="RU"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Dünya çapında</font></font></option></select> <input name="name" placeholder="Adınızı giriniz"> <input name="phone" placeholder="Telefon girin"> <font style="vertical-align: inherit;"><font style="vertical-align: inherit;"><input type="submit" value="% 53 indirim kazanın"></font></font> 
+<div class="timer_container">
+<div class="timer">
+<div class="item-timer ih">
+<div class="hr"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">1</font></font></div>
+<div class="dots"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">:</font></font></div></div>
+<div class="item-timer im">
+<div class="min" data-t="58"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">59</font></font></div>
+<div class="dots"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">:</font></font></div></div>
+<div class="item-timer is">
+<div class="sec flip" data-t="2"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">3</font></font></div></div></div></div></form></div><a class="popup-close img-replace" href="0"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Kapat</font></font></a> </div></div>
+<script src="jquery.js"></script>
+
+<script src="siema.min.js"></script>
+
+<script>
+    const mySiemar = new Siema({
+      selector: '#reviews',
+      duration: 200,
+      easing: 'ease-out',
+      perPage: {
+        320: 1,
+        760: 1,
+        1020: 1
+      },
+      startIndex: 0,
+      draggable: true,
+      multipleDrag: true,
+      threshold: 20,
+      loop: true,
+      rtl: false,
+      onInit: () => {},
+      onChange: () => {},}
+  
+    );
+  
+    document.querySelector('.scc .prev').addEventListener('click', () => mySiemar.prev());
+    document.querySelector('.scc .next').addEventListener('click', () => mySiemar.next());
+  
+  
+    var duration = { d: 1, h: 1, m: 59, s: 59 },
+      sf = 120,
+      maxD = 2,
+      maxH = 24,
+      maxM = 60,
+      maxS = 60;
+  
+    setInterval(function() {
+      $('.d').html(duration.d);
+      $('.hr').html(duration.h);
+      $('.min').html(duration.m)
+        .attr('data-t', duration.m - 1);
+      $('.sec').html(duration.s)
+        .attr('data-t', duration.s - 1);
+      duration.s--;
+      $('.sec').addClass('flip');
+      $('.min').removeClass('flip');
+      $('.id .circle').css('stroke-dashoffset', sf-(duration.d*(sf/maxD)));
+      $('.ih .circle').css('stroke-dashoffset', sf-(duration.h*(sf/maxH)));
+      $('.im .circle').css('stroke-dashoffset', sf-(duration.m*(sf/maxM)));
+      $('.is .circle').css('stroke-dashoffset', sf-(duration.s*(sf/maxS)));
+      if (duration.s === 58) {
+        $('.m').addClass('flip');
+      }
+      if (duration.s === 0) {
+        duration.m--;
+        duration.s = 59;
+        if (duration.m === 0) {
+          duration.h--;
+          duration.m = 59
+        }
+      }
+    }, 1000);
+  
+    // Select all links with hashes
+    $('a[href*="#"]')
+      // Remove links that don't actually link to anything
+      .not('[href="#"]')
+      .not('[href="#0"]')
+      .click(function(event) {
+        // On-page links
+        if (
+          location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '')
+          &&
+          location.hostname == this.hostname
+        ) {
+          // Figure out element to scroll to
+          var target = $(this.hash);
+          target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
+          // Does a scroll target exist?
+          if (target.length) {
+            // Only prevent default if animation is actually gonna happen
+            event.preventDefault();
+            $('html, body').animate({
+              scrollTop: target.offset().top
+            }, 1000, function() {
+              // Callback after animation
+              // Must change focus!
+              var $target = $(target);
+              $target.focus();
+              if ($target.is(":focus")) { // Checking if the target was focused
+                return false;
+              } else {
+                $target.attr('tabindex','-1'); // Adding tabindex for elements not focusable
+                $target.focus(); // Set focus again
+              };
+            });
+          }
+        }
+      });
+      //open popup
+    $('a.modal, .button').on('click', function(event){
+      event.preventDefault();
+      $('.popup-form').addClass('is-visible');
+    });
+  
+    $('a.cop').on('click', function(event){
+      event.preventDefault();
+      $('.popup-text').addClass('is-visible');
+    });
+  
+      //close popup
+    $('.popup').on('click', function(event){
+      if( $(event.target).is('.popup-close') || $(event.target).is('.popup') ) {
+        event.preventDefault();
+        $(this).removeClass('is-visible');
+      }
+    });
+  
+    $('.popup-text').on('click', function(event){
+      if( $(event.target).is('.popup-close') || $(event.target).is('.popup') ) {
+        event.preventDefault();
+        $(this).removeClass('is-visible');
+      }
+    });
+      //close popup when clicking the esc keyboard button
+    $(document).keyup(function(event){
+      if(event.which=='27'){
+        $('.popup').removeClass('is-visible');
+      }
+    });
+</script>
+
+<style>.form-control {
+    BOX-SIZING: border-box; FONT-SIZE: 14px; BORDER-TOP: #bfc3c4 1px solid; BORDER-RIGHT: #bfc3c4 1px solid; WIDTH: 100%; BACKGROUND: #fff; BORDER-BOTTOM: #bfc3c4 1px solid; FONT-WEIGHT: 700; OUTLINE-WIDTH: 0px; TEXT-ALIGN: center; BORDER-LEFT: #bfc3c4 1px solid; -webkit-appearance: none; outline-offset: 0; border-radius: 4px; -webkit-backface-visibility: hidden
+}
+</style></html>

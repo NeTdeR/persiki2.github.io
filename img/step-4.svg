@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="105px" height="105px" viewBox="0 0 105 105" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 59 (86127) - https://sketch.com -->
+    <title>step-4</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <rect id="path-1" x="0" y="0" width="105" height="105"></rect>
+    </defs>
+    <g id="cpa---128" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="cpa-128" transform="translate(-1050.000000, -10250.000000)">
+            <g id="art11" transform="translate(0.000000, 10050.000000)">
+                <g id="Group-28" transform="translate(160.000000, 160.000000)">
+                    <g id="Group-27-Copy-3" transform="translate(890.000000, 40.000000)">
+                        <g id="step-4">
+                            <mask id="mask-2" fill="white">
+                                <use xlink:href="#path-1"></use>
+                            </mask>
+                            <g id="Rectangle"></g>
+                            <g id="delivery-return" mask="url(#mask-2)" stroke-width="1.3">
+                                <g id="Groupe_614" transform="translate(0.097000, 0.000000)">
+                                    <rect id="Rectangle_354" stroke="#ADB0B7" x="0.553" y="0.65" width="103.7" height="103.7" rx="17.35"></rect>
+                                    <g id="Groupe_613" transform="translate(20.000000, 23.000000)" stroke="#000000" stroke-linecap="round" stroke-linejoin="round">
+                                        <line x1="60.349" y1="13.4" x2="60.349" y2="35.209" id="Ligne_13"></line>
+                                        <path d="M52.806,57.566 L8.931,57.566 C6.45991622,57.566 4.4565522,55.5630837 4.456,53.092 L4.456,20.124" id="Tracé_702"></path>
+                                        <rect id="Rectangle_355" x="0.82" y="0.946" width="63.165" height="12.633" rx="5.057"></rect>
+                                        <line x1="23.087" y1="24.031" x2="41.718" y2="24.031" id="Ligne_14"></line>
+                                        <g id="Groupe_612" transform="translate(32.000000, 35.000000)">
+                                            <path d="M7.3,14.752 L4.507,11.96 L0.661,8.113 C0.492884514,7.94544509 0.39839095,7.71785515 0.39839095,7.4805 C0.39839095,7.24314485 0.492884514,7.01555491 0.661,6.848 L7.3,0.209" id="Tracé_703"></path>
+                                            <line x1="0.403" y1="7.481" x2="20.807" y2="7.481" id="Ligne_15"></line>
+                                        </g>
+                                        <path d="M52.806,42.481 C56.9716077,42.481 60.3485,45.8578923 60.3485,50.0235 C60.3485,54.1891077 56.9716077,57.566 52.806,57.566" id="Tracé_704"></path>
+                                    </g>
+                                </g>
+                            </g>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

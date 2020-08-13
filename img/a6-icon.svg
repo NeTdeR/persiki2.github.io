@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="105px" height="105px" viewBox="0 0 105 105" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 59 (86127) - https://sketch.com -->
+    <title>a6-icon</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <rect id="path-1" x="0" y="0" width="105" height="105"></rect>
+    </defs>
+    <g id="cpa---128" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="cpa-128" transform="translate(-160.000000, -6349.000000)">
+            <g id="art6" transform="translate(0.000000, 6283.000000)">
+                <g id="a6-icon" transform="translate(160.000000, 66.000000)">
+                    <mask id="mask-2" fill="white">
+                        <use xlink:href="#path-1"></use>
+                    </mask>
+                    <g id="Rectangle"></g>
+                    <g id="wifi" mask="url(#mask-2)" stroke-width="1.3">
+                        <g id="Groupe_8" transform="translate(0.468000, 0.000000)">
+                            <rect id="Rectangle_7" stroke="#ADB0B7" x="0.182" y="0.65" width="103.7" height="103.7" rx="23"></rect>
+                            <g id="Groupe_7" transform="translate(19.000000, 25.000000)" stroke="#58BF93" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M0.422,14.778 C8.82297033,6.09465526 20.3293971,1.10436868 32.4098373,0.905015911 C44.4902776,0.705663142 56.1550949,5.31357527 64.838,13.715 C65.1086667,13.9783333 65.3753333,14.245 65.638,14.515" id="Tracé_655"></path>
+                                <path d="M11.9,27.063 C17.3170392,21.4257041 24.7516991,18.1713281 32.5682999,18.0158588 C40.3849007,17.8603895 47.9430862,20.8165632 53.58,26.234 C53.78,26.42 53.966,26.609 54.155,26.801" id="Tracé_656"></path>
+                                <path d="M23.391,37.632 C25.8231993,35.0403928 29.1853525,33.521203 32.7377263,33.4086793 C36.2901001,33.2961556 39.7416594,34.5995167 42.333,37.032 C42.449,37.141 42.564,37.253 42.677,37.366" id="Tracé_657"></path>
+                                <circle id="Ellipse_1762" cx="33.034" cy="51.526" r="4"></circle>
+                            </g>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

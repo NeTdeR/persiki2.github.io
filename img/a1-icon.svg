@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="105px" height="105px" viewBox="0 0 105 105" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 59 (86127) - https://sketch.com -->
+    <title>a1-icon</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <rect id="path-1" x="0" y="0" width="105" height="105"></rect>
+    </defs>
+    <g id="cpa---128" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="cpa-128" transform="translate(-200.000000, -1226.000000)">
+            <g id="art1" transform="translate(0.000000, 766.000000)">
+                <g id="Group-3" transform="translate(160.000000, 420.000000)">
+                    <g id="a1-icon" transform="translate(40.000000, 40.000000)">
+                        <mask id="mask-2" fill="white">
+                            <use xlink:href="#path-1"></use>
+                        </mask>
+                        <g id="Rectangle"></g>
+                        <g id="stethoscope" mask="url(#mask-2)" stroke-width="1.3">
+                            <g id="Groupe_16" transform="translate(0.247000, 0.000000)">
+                                <rect id="Rectangle_16" stroke="#ADB0B7" x="0.403" y="0.65" width="103.7" height="103.7" rx="23"></rect>
+                                <g id="Groupe_15" transform="translate(20.000000, 20.000000)" stroke="#000000" stroke-linecap="round" stroke-linejoin="round">
+                                    <circle id="Ellipse_1" cx="4.869" cy="5.292" r="4.374"></circle>
+                                    <circle id="Ellipse_2" cx="32.165" cy="5.292" r="4.374"></circle>
+                                    <circle id="Ellipse_3" cx="57.011" cy="56.909" r="6.999"></circle>
+                                    <path d="M32.165,18.765 C32.165,26.3036862 26.0536862,32.4149984 18.515,32.4149984 C10.9763138,32.4149984 4.865,26.3036862 4.865,18.765" id="Tracé_9"></path>
+                                    <line x1="4.87" y1="18.765" x2="4.87" y2="9.666" id="Ligne_6"></line>
+                                    <line x1="32.165" y1="18.765" x2="32.165" y2="9.666" id="Ligne_7"></line>
+                                    <path d="M37.7640277,54.459 C37.7701264,57.0130515 36.758245,59.4642604 34.9522527,61.2702527 C33.1462604,63.076245 30.6950515,64.0881264 28.141,64.082 C25.5774806,64.1192906 23.1080051,63.1174537 21.2950372,61.3046741 C19.4820693,59.4918946 18.4799758,57.0225233 18.517,54.459" id="Tracé_10"></path>
+                                    <path d="M37.7639723,42.036 C37.7578725,39.4817748 38.769891,37.0304135 40.5761,35.2243922 C42.382309,33.4183708 44.8337754,32.4066071 47.388,32.413 C49.9514302,32.3757028 52.4208081,33.3775704 54.2336188,35.1903812 C56.0464296,37.0031919 57.0482972,39.4725698 57.011,42.036" id="Tracé_11"></path>
+                                    <line x1="18.517" y1="32.413" x2="18.517" y2="54.46" id="Ligne_8"></line>
+                                    <line x1="57.011" y1="41.511" x2="57.011" y2="49.56" id="Ligne_9"></line>
+                                    <line x1="37.764" y1="42.561" x2="37.764" y2="54.459" id="Ligne_10"></line>
+                                </g>
+                            </g>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

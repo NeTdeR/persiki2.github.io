@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="106px" height="105px" viewBox="0 0 106 105" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 59 (86127) - https://sketch.com -->
+    <title>step-3</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <rect id="path-1" x="0" y="0" width="105" height="105"></rect>
+    </defs>
+    <g id="cpa---128" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="cpa-128" transform="translate(-768.000000, -10251.000000)">
+            <g id="art11" transform="translate(0.000000, 10050.000000)">
+                <g id="Group-28" transform="translate(160.000000, 160.000000)">
+                    <g id="Group-27-Copy-2" transform="translate(608.666667, 41.000000)">
+                        <g id="step-3">
+                            <mask id="mask-2" fill="white">
+                                <use xlink:href="#path-1"></use>
+                            </mask>
+                            <g id="Rectangle"></g>
+                            <g id="free-shipping" mask="url(#mask-2)">
+                                <g transform="translate(-1.000000, 0.000000)" id="Groupe_27">
+                                    <g transform="translate(0.797000, 0.000000)">
+                                        <rect id="Rectangle_353" stroke="#ADB0B7" stroke-width="1.3" x="0.853" y="0.65" width="103.7" height="103.7" rx="23"></rect>
+                                        <g id="icon-reassurance_shipping" transform="translate(21.000000, 29.000000)" stroke="#000000" stroke-width="1.3">
+                                            <g id="Groupe_611">
+                                                <g id="Trukc">
+                                                    <g id="icon-truck">
+                                                        <circle id="Oval" cx="42.025" cy="39.656" r="6.612"></circle>
+                                                        <path d="M50.2,39.189 L59.161,39.189 C60.8511499,39.1450623 62.2402995,37.8419015 62.392,36.158 L63.275,23.617 C63.3738767,22.2105256 62.4686219,20.9289525 61.11,20.552 L56.429,19.203 C55.8876312,19.0377969 55.4791286,18.5909733 55.363,18.037 L54.363,12.757 C53.9345437,10.5518745 52.009329,8.95562041 49.763,8.943 L38.937,8.943" id="Shape" stroke-linecap="round" stroke-linejoin="round"></path>
+                                                        <circle id="Ellipse_1783" cx="13.128" cy="39.656" r="6.612"></circle>
+                                                        <line x1="20.107" y1="37.524" x2="35.097" y2="37.524" id="Tracé_700" stroke-linecap="round" stroke-linejoin="round"></line>
+                                                        <line x1="0.12" y1="37.524" x2="5.12" y2="37.524" id="Tracé_701" stroke-linecap="round" stroke-linejoin="round"></line>
+                                                        <rect id="Rectangle-path" stroke-linecap="round" stroke-linejoin="round" x="0.32" y="0.732" width="37.475" height="26.549" rx="2.835"></rect>
+                                                    </g>
+                                                </g>
+                                            </g>
+                                        </g>
+                                    </g>
+                                </g>
+                            </g>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
